@@ -13,4 +13,8 @@ function getUserProfile(userName){
             document.querySelector('.profile-data').innerHTML = userInfo;
     });
 };
+<<<<<<< HEAD
 getUserProfile('rodrigowebdev-design')
+=======
+getUserProfile('cadudias')
+>>>>>>> be69e0fa11f448ff57549a915466c0e91c2b96b4
