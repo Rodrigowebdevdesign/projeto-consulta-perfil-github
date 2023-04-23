@@ -1,2 +1,4 @@
 # projeto-inicial-fetch-github-api
-Repositório contendo os arquivos iniciais do projeto de Fetch e GitHub API
+## para consultar qualquer perfil de usuário do github basta escrever o nome do mesmo e clicar em Buscar como mostra a imagem logo abaixo.
+
+
