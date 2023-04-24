@@ -1,12 +1,10 @@
 const base_url = 'https://api.github.com/users';
 
-// conexão com a api do github
-
 async function user(userName) {
     const response = await fetch(`${base_url}/${userName}`);
     return await response.json();
 };
-async function repos(userName) {
+async function repositories(userName) {
     const response = await fetch(`${base_url}/${userName}/repos`);
     return await response.json();
 };
@@ -15,16 +13,24 @@ async function repos(userName) {
 
 document.getElementById('btn-search').addEventListener('click', () => {
     const userName = document.querySelector('#input-search').value
+    if (userName.length === 0) {
+        alert('preencha o campo com um nome de usuário do Github')
+        return
+    }
     getUserProfile(userName);
-    
+
 });
 document.getElementById('input-search').addEventListener('keyup', (e) => {
     const userName = e.target.value;
     const key = e.which || e.keyCode;
     const isKeyPressed = key === 13;
     if (isKeyPressed) {
+        if (userName.length === 0) {
+            alert('preencha o campo com um nome de usuário do Github')
+            return
+        }
         getUserProfile(userName);
-    
+
     }
 });
 
@@ -42,6 +48,9 @@ function getUserProfile(userName) {
                             </div>
                         </div>
                          `
+        if(user(userName).message ==='Not Found'){
+            
+        }
         document.querySelector('.profile-data').innerHTML = userInfo;
 
         getUserRepos(userName)
@@ -51,7 +60,7 @@ function getUserProfile(userName) {
 // função responsável por pegar os repositórios na api e apresentar ao usuário na tela
 
 function getUserRepos(userName) {
-    repos(userName).then(reposData => {
+    repositories(userName).then(reposData => {
         let repositoriesItens = "";
 
         reposData.forEach(repo => {
@@ -63,5 +72,5 @@ function getUserRepos(userName) {
                                                     <ul>${repositoriesItens}</ul>
                                                 </div>`
     });
-
 }
+
